@@ -911,13 +911,10 @@
           .replace(/[“”]/g, '"');
       }
 
+      const _escapeEl = document.createElement("div");
       function escapeHtml(str) {
-        return str
-          .replace(/&/g, "&")
-          .replace(/</g, "<")
-          .replace(/>/g, ">")
-          .replace(/"/g, """)
-          .replace(/'/g, "'");
+        _escapeEl.textContent = str;
+        return _escapeEl.innerHTML;
       }
 
       function showToast(msg) {
@@ -1049,7 +1046,7 @@
 
         // Active Cursor Character
         if (idx < total) {
-          const activeChar = state.graphemes[idx] === " " ? " " : escapeHtml(state.graphemes[idx]);
+          const activeChar = state.graphemes[idx] === " " ? "\u00A0" : escapeHtml(state.graphemes[idx]);
           html += `<span id="active-caret-char" class="relative inline-block font-bold underline decoration-secondary decoration-2 underline-offset-4">` +
                   `<span class="absolute -left-[2px] top-0.5 bottom-0.5 w-[2.5px] bg-secondary rounded-full caret-pulse"></span>` +
                   `${activeChar}</span>`;
@@ -1058,7 +1055,7 @@
         // Upcoming Characters
         if (state.displayMode === "progressive") {
           for (let j = idx + 1; j < Math.min(total, idx + 1 + revealWindow); j++) {
-            const nextCh = state.graphemes[j] === " " ? " " : escapeHtml(state.graphemes[j]);
+            const nextCh = state.graphemes[j] === " " ? "\u00A0" : escapeHtml(state.graphemes[j]);
             html += `<span class="px-0.5 rounded bg-surface-container-high/50 font-medium">${nextCh}</span>`;
           }
           const remaining = total - (idx + 1 + revealWindow);
