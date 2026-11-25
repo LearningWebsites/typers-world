@@ -540,7 +540,7 @@
                 <!-- Live Embedded Player Container -->
                 <div id="embed-player-container" class="w-full rounded-xl overflow-hidden bg-surface-container-lowest border border-outline-variant/20 flex items-center justify-center min-h-[152px]">
                   <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX8Uebhn9wzrS?utm_source=generator&theme=0"
-                    width="100%" height="152" frameborder="0" allowfullscreen=""
+                    width="100%" height="152" frameborder="0"
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
               </div>
@@ -1513,7 +1513,7 @@
         // Visible YouTube Mini-Player (Minimum 280x200px for YouTube embed policy compliance)
         const ytMatch = rawUrl.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
         if (ytMatch) {
-          container.innerHTML = `<div class="p-2 flex justify-center w-full"><iframe width="280" height="200" src="https://www.youtube-nocookie.com/embed/${ytMatch[1]}" title="YouTube player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded-lg"></iframe></div>`;
+          container.innerHTML = `<div class="p-2 flex justify-center w-full"><iframe width="280" height="200" src="https://www.youtube-nocookie.com/embed/${ytMatch[1]}" title="YouTube player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" class="rounded-lg"></iframe></div>`;
           return;
         }
 
